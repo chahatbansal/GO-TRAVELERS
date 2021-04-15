@@ -1,0 +1,29 @@
+{
+  "services": {
+    "loadbalancerStratergy": "NEAREST_SERVER",
+    "instances": [
+      {
+        "pathName": "Delhi",
+        "protocol": "http",
+        "coordinates": [
+          28.7041,
+          77.1025
+        ],
+        "host": "localhost",
+        "port": 3003,
+        "url": "http://localhost:3003"
+      },
+      {
+        "pathName": "Kolkata",
+        "protocol": "http",
+        "coordinates": [
+          22.5726,
+          88.3639
+        ],
+        "host": "localhost",
+        "port": 3004,
+        "url": "http://localhost:3004"
+      }
+    ]
+  }
+}

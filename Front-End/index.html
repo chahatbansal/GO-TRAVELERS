@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	  <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- <script src="https://kit.fontawesome.com/908a2fcef3.js" crossorigin="anonymous"></script> -->
+    <title>Home!!!</title>
+</head>
+<body class="d-flex flex-column vh-100 ">
+	<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="flight-id"></h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <form id="booking-form">
+				<div class="form-group">
+					<label for="card-number" class="col-form-label">Enter your card number</label>
+					<input type="text" class="form-control" id="card-number">
+				</div>
+				<h5>Enter Traveller Details</h5>
+				<div id="extra-person-placeholder">
+
+				</div>
+			  </form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary" id="reserve-flight" onclick="book()">Book</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#">Go FLY</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link" href="index.html">Home</a>
+			  </li>
+			  <li class="nav-item" id="user-info" hidden>
+				<a class="nav-link" href="user.html">UserInfo</a>
+			  </li>
+			</ul>
+			<div class="navbar-nav ml-auto" id="login-button">
+				<a href="login.html" class="nav-link">Login</a>
+				<a href="register.html" class="nav-link">Register</a>
+			</div>
+		  <div class="navbar-nav ml-auto" id="logout-button" hidden>
+				  <a href="login.html" class="nav-link">Logout</a>
+			  </div>
+			  <div class="navbar-nav ml-auto" id="country-select">
+				<li class="nav-item">
+					<select class="custom-select" id="select-country">
+					  <option selected>Select Country</option>
+					  <option value="India" selected="selected">India</option>
+					  <option value="US">US</option>
+					  <option value="UK">UK</option>
+					</select>
+				  </li>
+			</div>
+			</div>
+		  </div>
+		</nav>
+  <div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="booking-cta">
+							<h1><font face="Merienda One" color="white" size="80">Book Now</font></h1>
+							<p><font face="El Messiri" color="white">Visit Your favourite destination</font></p>
+							<img src="https://image.flaticon.com/icons/png/128/3125/3125831.png" alt="image">
+						</div>
+					</div>
+					<div class="col-md-7 col-md-offset-1">
+						<div class="booking-form">
+							<form id="flight-search">
+				  				<div class="form-group">
+									<div class="form-checkbox">
+										<label for="roundtrip">
+											<input type="radio" id="roundtrip" name="flight-type" value="round-trip">
+											<span></span>Round Trip
+										</label>
+										<label for="one-way">
+											<input type="radio" id="one-way" name="flight-type" value="one-way" checked="checked">
+											<span></span>One Way
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="form-label">Flying from</span>
+											<input class="form-control" type="text" placeholder="City or airport" name="source" required>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="form-label">Flying to</span>
+											<input class="form-control" type="text" placeholder="City or airport" name="destination" required>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="form-label">Departing</span>
+											<input class="form-control" type="date" name="departure" required>
+										</div>
+									</div>
+									<div class="col-md-6" id="returnDatePicker" hidden>
+										<div class="form-group">
+											<span class="form-label">Returning</span>
+											<input class="form-control" type="date" name="return" >
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<span class="form-label">Persons</span>
+											<input class="form-control" type="number" placeholder="Number of people" name="persons" required>
+										</div>
+									</div>
+								</div>
+								<div class="form-btn">
+									<button class="submit-btn" type="submit">Show flights</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div>
+					<div id="one-way-flights" hidden>
+						<h3><font face="Merienda One" color="white" size="80">Departing Flights</font></h3>
+						<table class="table table-bordered table-dark">
+							<thead>
+							<tr>
+								<th scope="col">Flight ID</th>
+								<th scope="col">Departure Details</th>
+								<th scope="col">Arrival Details</th>
+								<th scope="col">Stops</th>
+								<th scope="col"></th>
+							</tr>
+							</thead>
+							<tbody id="departure-flight-placeholder">
+
+							</tbody>
+						</table>
+					</div>
+					<div id="return-flights" hidden>
+						<h3><font face="Merienda One" color="white" size="80">Returning Flights</font></h3>
+						<table class="table table-bordered table-dark">
+							<thead>
+							<tr>
+								<th scope="col">Flight ID</th>
+								<th scope="col">Departure Details</th>
+								<th scope="col">Arrival Details</th>
+								<th scope="col">Stops</th>
+								<th scope="col"></th>
+							</tr>
+							</thead>
+							<tbody id="returning-flight-placeholder">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="js/flights.js"></script>
+	<script src="js/navbar.js"></script>
+</body>
+</html>

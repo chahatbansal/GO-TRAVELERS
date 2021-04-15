@@ -1,0 +1,23 @@
+{
+    "services": {
+        "India": {
+            "index": 0,
+            "instance": {
+                "apiName": "India",
+                "protocol": "http",
+                "host": "localhost",
+                "port": 3002,
+                "url": "http://localhost:3002"
+            }
+        },
+        "US": {
+            "instance": {
+                "apiName": "US",
+                "protocol": "http",
+                "host": "localhost",
+                "port": 3002,
+                "url": "http://localhost:3002"
+            }
+        }
+    }
+}
